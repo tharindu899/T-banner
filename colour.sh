@@ -258,7 +258,6 @@ if [ ! -d "$PREFIX/etc/.plugin/zsh-autosuggestions" ]; then
     spin $! "zsh-autosuggestions"
 fi
 
-
 # Install additional packages for AstroNvim
 apt install neovim lua-language-server luarocks stylua ripgrep lazygit yarn python python-pip ccls clang rust-analyzer -y > /dev/null 2>> "$ERROR_LOG" &
 spin $! "packages for AstroNvim"
@@ -270,7 +269,6 @@ if [ ! -d "$HOME/.config" ]; then
     spin $! "Created ~/.config directory"
 fi
 
-#cd ~/.config
 # Check if nvim exists, and move it to nvim.bak if it does
 if [ -d "$HOME/.config/nvim" ]; then
     cd ~/.config
@@ -278,17 +276,9 @@ if [ -d "$HOME/.config/nvim" ]; then
     #spin $! "backup existing nvim"
 fi
 
-
 # Download and unzip the new nvim setup
 (cp -r ~/T-banner/.object/nvim1.zip ~/.config && cd ~/.config && unzip nvim1.zip) > /dev/null 2>> "$ERROR_LOG" &
 spin $! "nvim setup"
-
-
-#cd ~/.config && unzip nvimasro.zip > /dev/null 2>> "$ERROR_LOG"
-# if [ -d "$HOME/.config/nvimasro"]; then
-#     cd ~/.config
-#     mv nvimasro nvim > /dev/null 2>> "$ERROR_LOG"
-# fi
 
 # Create shortcut commands
 echo "#!/data/data/com.termux/files/usr/bin/sh" > "$PREFIX/bin/addecho"
@@ -305,8 +295,6 @@ cd ~
 # Clean up temporary files
 rm -rf ~/T-banner/temp_art.txt
 rm -rf ~/.config/nvimasro.zip
-
-
 echo -e "\n\e[32mSetup complete. Please restart your terminal or run 'zsh' to apply changes.\e[0m"
 
 exit
