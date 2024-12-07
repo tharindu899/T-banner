@@ -127,6 +127,16 @@ else
     termux-reload-settings
 fi
 
+# Move font if it exists
+if [ -f "$PREFIX/share/figlet/ASCII-Shadow.flf" ]; then
+    rm -rf "$PREFIX/share/figlet/ASCII-Shadow.flf"
+    cp -r "$HOME/T-banner/.object/ASCII-Shadow.flf" "$PREFIX/share/figlet"
+    sleep 3
+else
+    cp -r "$HOME/T-banner/.object/ASCII-Shadow.flf" "$PREFIX/share/figlet"
+    sleep 3
+fi
+
 # Install nala
 (apt-get install nala -y) > /dev/null 2>> "$ERROR_LOG" &
 spin $! "Installing nala"
@@ -293,7 +303,7 @@ chmod 777 "$PREFIX/bin/tpecho"
 chsh -s zsh
 cd ~
 # Clean up temporary files
-rm -rf ~/temp_art.txt
+rm -rf ~/T-banner/temp_art.txt
 rm -rf ~/.config/nvimasro.zip
 
 

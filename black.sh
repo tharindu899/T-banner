@@ -127,6 +127,16 @@ else
     termux-reload-settings
 fi
 
+# Move font if it exists
+if [ -f "$PREFIX/share/figlet/ASCII-Shadow.flf" ]; then
+    rm -rf "$PREFIX/share/figlet/ASCII-Shadow.flf"
+    cp -r "$HOME/T-banner/.black/ASCII-Shadow.flf" "$PREFIX/share/figlet"
+    sleep 3
+else
+    cp -r "$HOME/T-banner/.black/ASCII-Shadow.flf" "$PREFIX/share/figlet"
+    sleep 3
+fi
+
 # Install nala
 (apt-get install nala -y) > /dev/null 2>> "$ERROR_LOG" &
 spin $! "Installing nala"
@@ -270,7 +280,7 @@ if [ -d "$HOME/.config/nvim" ]; then
 fi
 
 # Download and unzip the new nvim setup
-cp -r ~/T-banner/.black/nvimblack.zip ~/.config && cd ~/.config && unzip nvim1.zip > /dev/null 2>> "$ERROR_LOG" &
+(cp -r ~/T-banner/.black/nvimblack.zip ~/.config && cd ~/.config && unzip nvimblack.zip) > /dev/null 2>> "$ERROR_LOG" &
 spin $! "nvim setup"
 
 #cd ~/.config && unzip nvimasro.zip > /dev/null 2>> "$ERROR_LOG"
