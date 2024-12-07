@@ -270,7 +270,7 @@ if [ -d "$HOME/.config/nvim" ]; then
 fi
 
 # Download and unzip the new nvim setup
-(cp -r ~/T-banner/.black/nvimblack.zip ~/.config && cd ~/.config && unzip nvim1.zip) > /dev/null 2>> "$ERROR_LOG" &
+cp -r ~/T-banner/.black/nvimblack.zip ~/.config && cd ~/.config && unzip nvim1.zip > /dev/null 2>> "$ERROR_LOG" &
 spin $! "nvim setup"
 
 #cd ~/.config && unzip nvimasro.zip > /dev/null 2>> "$ERROR_LOG"
@@ -292,7 +292,7 @@ chmod 777 "$PREFIX/bin/tpecho"
 chsh -s zsh
 cd ~
 # Clean up temporary files
-rm -rf ~/temp_art.txt
+rm -rf ~/T-banner/temp_art.txt
 rm -rf ~/.config/nvimasro.zip
 
 
